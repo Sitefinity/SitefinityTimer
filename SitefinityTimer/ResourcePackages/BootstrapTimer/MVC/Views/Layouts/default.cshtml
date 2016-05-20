@@ -1,0 +1,92 @@
+﻿@using System.Web.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+
+<!DOCTYPE html>
+<html @Html.RenderLangAttribute()>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @Html.Section("head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/css/styles.min.css"), "head")
+
+    <!-- Template CSS Files
+    ================================================== -->
+
+    <!-- Ionicons Fonts Css -->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/ionicons.min.css"), "head")
+    <!-- animate css -->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/animate.css"), "head")
+    <!-- Hero area slider css-->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/slider.css"), "head")
+    <!-- owl craousel css -->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/owl.carousel.css"), "head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/owl.theme.css"), "head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/jquery.fancybox.css"), "head")
+    <!-- template main css file -->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/main.css"), "head")
+    <!-- responsive css -->
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/css/responsive.css"), "head")
+        
+    <!-- Template Javascript Files
+    ================================================== -->
+    <!-- modernizr js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/vendor/modernizr-2.6.2.min.js"), "head")
+    <!-- jquery -->
+    @Html.Script(Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"), "head")
+    <!-- owl carouserl js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/owl.carousel.min.js"), "head")
+    <!-- bootstrap js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/bootstrap.min.js"), "head")
+    <!-- wow js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/wow.min.js"), "head")
+    <!-- slider js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/slider.js"), "head")
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/jquery.fancybox.js"), "head")
+    <!-- template main js -->
+    @Html.Script(Url.Content("~/ResourcePackages/BootstrapTimer/assets/dist/Timer/js/main.js"), "head")
+
+</head>
+
+<body>
+    @Html.Section("top")
+        
+    <div class="sfPublicWrapper" id="PublicWrapper">
+
+        <header id="top-bar" class="navbar-fixed-top">
+            @Html.SfPlaceHolder("Header")
+        </header>	
+
+
+         @Html.SfPlaceHolder("Body")
+
+
+        <footer id="footer">
+            @Html.SfPlaceHolder("Footer")
+        </footer>
+    </div>
+
+    @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
+    @if (Html.ShouldRenderInlineEditing())
+    {
+        @Html.Script(ScriptRef.MicrosoftAjax, "top")
+        @Html.Script(ScriptRef.MicrosoftAjaxCore, "top")
+
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js"), "top")
+        @Html.Script(ScriptRef.KendoAll, "top")
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js"), "top")
+        @Html.InlineEditingManager(false)
+    }
+
+    @Html.Section("bottom")
+</body>
+</html>

@@ -1,0 +1,68 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+
+@using System.Collections;
+@using System.Linq;
+@using Telerik.Sitefinity.Frontend.DynamicContent.WidgetTemplates.Fields.Helpers;
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Data.ContentLinks;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.Localization;
+@using Telerik.Sitefinity.Model;
+@using Telerik.Sitefinity.Model.ContentLinks;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Pages.Model;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2 @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</h2>
+                        <div class="portfolio-meta">
+                            <span>@Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")</span>|
+                               <span>Category: 
+                                   
+                                    @if (Model.Item.Fields.Category != null)
+                                    {
+                                        <span @Html.InlineEditingFieldAttributes("Category", "HierarchicalTaxon")>
+                                            @foreach (var taxon in Model.Item.GetHierarchicalTaxons("Category"))
+                                            {
+                                                @taxon.Title.ToString() 
+                                            }
+                                        </span>
+                                    }
+
+                               </span>|
+                               <span>website: <a href="@Html.Raw(Model.Item.Fields.Website)">Themefisher</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    
+                    @foreach (var relatedItem in Model.Item.Fields.Image)
+                    {
+                        <div class="portfolio-single-img">
+                            <img src='@relatedItem.Fields.MediaUrl' alt='@relatedItem.Fields.AlternativeText' title='@relatedItem.Fields.Title' class="img-responsive"/>
+                        </div>   
+                    }
+
+                    <div @Html.InlineEditingFieldAttributes("Information", "LongText") class="portfolio-content">
+                         @Html.Raw(Model.Item.Fields.Information)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

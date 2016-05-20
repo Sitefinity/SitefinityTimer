@@ -1,0 +1,57 @@
+----------------------------------------
+Timestamp: 5/9/2016 1:18:20 PM
+
+Message: HandlingInstanceID: 749e772b-379e-4c56-8f12-9ea2397a500e
+An exception of type 'System.Web.HttpException' occurred and was caught.
+------------------------------------------------------------------------
+05/09/2016 16:18:20
+Type : System.Web.HttpException, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+Message : File does not exist.
+Source : System.Web
+Help link : 
+WebEventCode : 0
+ErrorCode : -2147467259
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Boolean ProcessRequestForNonMapPathBasedVirtualFile(System.Web.HttpRequest, System.Web.HttpResponse, System.String)
+HResult : -2147467259
+Stack Trace :    at System.Web.StaticFileHandler.ProcessRequestForNonMapPathBasedVirtualFile(HttpRequest request, HttpResponse response, String overrideVirtualPath)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+Additional Info:
+
+MachineName : PELEVA
+TimeStamp : 5/9/2016 1:18:20 PM
+FullName : Telerik.Sitefinity.Utilities, Version=8.2.5900.0, Culture=neutral, PublicKeyToken=b28c218413bdf563
+AppDomainName : b2ffefe3-1-131072734466642616
+ThreadIdentity : 
+WindowsIdentity : PROGRESS\peleva
+Requested URL : http://localhost:32340/TimerTheme/appstatus?count=1
+
+
+Category: ErrorLog
+
+Priority: 0
+
+EventId: 90000
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: PELEVA
+
+App Domain: b2ffefe3-1-131072734466642616
+
+ProcessId: 51080
+
+Process Name: D:\Sitefinity82\Sitefinity.exe
+
+Thread Name: 
+
+Win32 ThreadId:50732
+
+Extended Properties: 
+----------------------------------------

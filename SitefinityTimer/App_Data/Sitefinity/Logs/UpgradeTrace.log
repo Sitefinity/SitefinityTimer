@@ -1,0 +1,134 @@
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: Db Migration Complexity: Trivial
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: Adding a foreign key constraint(s) to a new table(s), the create table statement(s) is included as well.
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: Adding an index(indices) definition for a new table(s), the create table statement(s) is included as well.
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: Adding a new table(s).
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: -- Telerik.OpenAccess.TrackedList`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] Telerik.Sitefinity.DynamicTypes.Model.Artwork.Work.Category
+CREATE TABLE [artwork_work_category] (
+    [base_id] uniqueidentifier NOT NULL,
+    [seq] int NOT NULL,                     -- <sequence>
+    [val] uniqueidentifier NULL,            -- <value>
+    CONSTRAINT [pk_artwork_work_category] PRIMARY KEY ([base_id], [seq])
+)
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: ALTER TABLE [artwork_work_category] ADD CONSTRAINT [ref_artwrk_wrk_ctgry__52A630B3] FOREIGN KEY ([base_id]) REFERENCES [artwork_work]([base_id])
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:25:14 AM
+
+Message: -- Index 'idx_artwork_work_category_val' was not detected in the database. It will be created
+CREATE INDEX [idx_artwork_work_category_val] ON [artwork_work_category]([val])
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:46:34 AM
+
+Message: Db Migration Complexity: Extending
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:46:34 AM
+
+Message: Adding a column(s) on an existing table(s).
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 10:46:34 AM
+
+Message: -- add column for field Work.Website
+ALTER TABLE [artwork_work] ADD [Website] NVARCHAR(255) NULL
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: Db Migration Complexity: Trivial
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: Adding a foreign key constraint(s) to a new table(s), the create table statement(s) is included as well.
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: Adding an index(indices) definition for a new table(s), the create table statement(s) is included as well.
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: Adding a new table(s).
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: -- Telerik.OpenAccess.TrackedList`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] Telerik.Sitefinity.DynamicTypes.Model.Artwork.Work.Tags
+CREATE TABLE [artwork_work_tags] (
+    [base_id] uniqueidentifier NOT NULL,
+    [seq] int NOT NULL,                     -- <sequence>
+    [val] uniqueidentifier NULL,            -- <value>
+    CONSTRAINT [pk_artwork_work_tags] PRIMARY KEY ([base_id], [seq])
+)
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: ALTER TABLE [artwork_work_tags] ADD CONSTRAINT [ref_artwrk_wrk_tgs_rt_945A7124] FOREIGN KEY ([base_id]) REFERENCES [artwork_work]([base_id])
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2/1/2016 12:06:30 PM
+
+Message: -- Index 'idx_artwork_work_tags_val' was not detected in the database. It will be created
+CREATE INDEX [idx_artwork_work_tags_val] ON [artwork_work_tags]([val])
+
+
+----------------------------------------
