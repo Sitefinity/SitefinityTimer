@@ -1,0 +1,45 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+
+<div class="row @Model.CssClass">
+
+@for (int i = 0; i < Model.Items.Count(); i++)
+{
+    var item = Model.Items.ElementAt(i);
+    var itemIndex = (Model.CurrentPage - 1) * ViewBag.ItemsPerPage + i + 1;
+	var detailPageUrl = ViewBag.OpenInSamePage ? HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, itemIndex) :
+        HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage);
+        
+    <div class="col-sm-4 col-xs-12">
+        <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="500ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
+            <div class="img-wrapper">
+                <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" class="img-responsive" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")' />
+            </div>
+            <div class="overlay">
+                <div class="buttons">
+                <a rel="gallery" class="fancybox" href="@(((ThumbnailViewModel)item).ThumbnailUrl)">Demo</a>
+                </div>
+            </div>
+        </figure>
+    </div>
+        
+    }
+</div>
+
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
