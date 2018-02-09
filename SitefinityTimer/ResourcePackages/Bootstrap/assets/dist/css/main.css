@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -13058,7 +13058,7 @@ article {
   display: inline-block;
   margin: 3px 1px; }
 
-.social-share a {
+.social-share a, .social-share .social-item {
   font-size: 20px;
   color: #fff;
   background: #02bdd5;
