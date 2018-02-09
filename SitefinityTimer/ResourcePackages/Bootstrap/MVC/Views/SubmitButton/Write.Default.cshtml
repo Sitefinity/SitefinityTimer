@@ -6,12 +6,8 @@
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 
-<div class="@Model.CssClass form-group">
-	<button type="submit" @Html.SubmitButtonRequiredAttributes() class="sf-SubmitButton btn btn-primary">@Model.Label</button>
-    @if (Model.AllowGoBack)
-    {
-        <a href="javascript:void(0)" data-sf-btn-role="prev">@Html.HtmlSanitize(Model.PreviousStepText) </a>
-    }
+<div class="@Model.CssClass wow fadeInDown">
+    <input  type="submit" @Html.SubmitButtonRequiredAttributes() class="btn btn-default btn-send" data-wow-duration="500ms" data-wow-delay="1.4s">
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SubmitButton/submit-button.js"), "bottom", false)
