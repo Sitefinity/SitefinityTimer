@@ -1,0 +1,140 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2 @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+                        @Model.Item.Fields.Title
+                        </h2>
+                        <div class="portfolio-meta">
+                            <span>@Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")</span> |
+                            <span>Category:
+
+                                        @if(Model.Item.Fields.Category!=null)
+                                        {
+                                    
+                                            foreach (var taxon in Model.Item.GetHierarchicalTaxons("Category").Take(1))
+                                            {
+                                                @taxon.Title.ToString() 
+                                            }
+
+                                            foreach (var taxon in Model.Item.GetHierarchicalTaxons("Category").Skip(1))
+                                            {
+                                               @(", " + taxon.Title.ToString())
+                                            }
+                                        
+                                        }
+
+                                </span>|
+                            <span>Tags:
+                               
+                                        @if(Model.Item.Fields.Tags!=null)
+                                        {
+
+                                            foreach (var taxon in Model.Item.GetFlatTaxons("Tags").Take(1))
+                                            {
+                                              @taxon.Title.ToString()
+
+                                            }
+                                       
+                                            foreach (var taxon in Model.Item.GetFlatTaxons("Tags").Skip(1))
+                                            {
+                                               @(", " + taxon.Title.ToString())
+                                            }
+                                       
+                                        }
+
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="single-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="post-img">
+                        @if (Model.Item.Fields.Image != null)
+                        {
+                        <img class="img-responsive" src='@Model.Item.Fields.Image.Fields.MediaUrl' alt='@Model.Item.Fields.Image.Fields.AlternativeText' title='@Model.Item.Fields.Image.Fields.Title' />
+                        }
+                    </div>
+                    <div @Html.InlineEditingFieldAttributes("Content", "LongText") class="post-content">@Html.Raw(Model.Item.Fields.Content)</div>
+                @if (Model.EnableSocialSharing)
+                {
+                @Html.SocialShareOptions()
+                }
+
+            </div>
+        </div>
+
+
+</div>
+</section>
+
+@if(Model.Item.Fields.ArtWork.Length > 0)
+{
+<section class="works service-page">
+
+    <div class="container">
+        <h2 class="subtitle wow fadeInUp animated animated" data-wow-delay=".3s" data-wow-duration="500ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 0.3s; animation-name: fadeInUp;">Some Of Our Features Works</h2>
+        <p class="subtitle-des wow fadeInUp animated animated" data-wow-delay=".5s" data-wow-duration="500ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 0.5s; animation-name: fadeInUp;">
+            Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere
+            <br>
+            tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.
+        </p>
+        <div class="row">
+            @foreach (var relatedItem in Model.Item.Fields.ArtWork)
+            { <div class="col-sm-3">
+            <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="500ms" data-wow-delay="0ms">
+                @foreach (var relatedImage in relatedItem.Fields.Image)
+                {
+                <div class="img-wrapper">
+
+                    <img src="@relatedImage.Fields.MediaUrl" class="img-responsive" alt="this is a title">
+
+                    <div class="overlay">
+                        <div class="buttons">
+                            <a rel="gallery" class="fancybox" href="@relatedImage.Fields.MediaUrl">Demo</a>
+                            <a target="_blank" href="@relatedItem.DefaultUrl">Details</a>
+                        </div>
+                    </div>
+                </div>
+                }
+                <figcaption>
+                    <h4>
+                        <a href="@relatedItem.DefaultUrl">@relatedItem.Fields.Title
+                        </a>
+                    </h4>
+                    <p>
+                        @relatedItem.Fields.Description
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+            }
+        </div>
+    </div>
+</section>
+}
+<section class="single-post">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.CommentsList(@Model.Item.DataItem)
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

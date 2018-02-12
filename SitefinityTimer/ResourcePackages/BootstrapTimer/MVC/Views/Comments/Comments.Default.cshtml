@@ -28,7 +28,7 @@
         </div>
 
     </div>
-          
+
     <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;"><span></span></div>
 
     <div data-sf-role="comments-container" class="comments sf-Comments-list"></div>
@@ -42,10 +42,10 @@
     {
         <div class="alert alert-warning">@Html.Resource("CommentsThreadIsClosedMessage")</div>
     }
-    else 
-    {   
-        <div class="sf-Comments-form post-comment"> 
-            <h3>Leave a Reply</h3>  
+    else
+    {
+        <div class="sf-Comments-form post-comment">
+            <h3>Leave a Reply</h3>
             <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" class="form-horizontal">
                 @if (Model.RequiresApproval)
                 {
@@ -55,14 +55,14 @@
                     <div class="sf-media-body">
 
                         <div data-sf-role="comments-new-logged-out-view" style="display:none;">
-       
+
                             <div class="form-group">
                                 <div class="col-lg-6">
                                     <input type="text" placeholder="Name" data-sf-role="comments-new-name" class="col-lg-12 form-control" />
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <input type="email" placeholder="Email" data-sf-role="comments-new-email" class="col-lg-12 form-control" /> 
+                                    <input type="email" placeholder="Email" data-sf-role="comments-new-email" class="col-lg-12 form-control" />
                                 </div>
                             </div>
 
@@ -75,7 +75,7 @@
                             </div>
 
                         </div>
-            
+
                         @if (Model.RequiresCaptcha)
                         {
                             <div data-sf-role="captcha-container" class="sf-Comments-captcha form-group">
@@ -120,7 +120,7 @@
             <div data-sf-role="error-message" class="has-error">
                 <span class="help-block"></span>
             </div>
-					
+
             <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
 				<span></span>
 			</div>
@@ -128,29 +128,29 @@
        </div>
 
 
-        
+
         if (Model.RequiresAuthentication)
         {
             <div class="alert alert-warning" data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToComment")</div>
         }
     }
-    
+
     @*Single comment template*@
 
     <div data-sf-role="single-comment-template">
 
         <div class="media sf-media">
-            <div class="pull-left"> 
+            <div class="pull-left">
                 <img class="media-object" alt="comment-avatar" data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
             </div>
             <div class="media-body sf-media-body">
-           
-                <h4 data-sf-role="comment-name" class="media-heading"></h4> 
+
+                <h4 data-sf-role="comment-name" class="media-heading"></h4>
                 <p data-sf-role="comment-date" class="text-muted"></p>
-               
+
                 <p data-sf-role="comment-message"></p>
-            </div>  
-        </div>  
+            </div>
+        </div>
 
     </div>
 

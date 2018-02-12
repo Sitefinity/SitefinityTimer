@@ -1,0 +1,54 @@
+﻿@using System.Web.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+
+<!DOCTYPE html>
+<html @Html.RenderLangAttribute()>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    @Html.Section("head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/main.min.css"), "head")
+    @Html.Script(Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"), "head")
+    @Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "head")
+</head>
+
+<body>
+@Html.Section("top")
+
+<div>
+
+    <header id="top-bar" class="navbar-fixed-top">
+        @Html.SfPlaceHolder("Header")
+    </header>
+
+
+    @Html.SfPlaceHolder("Body")
+
+
+    <footer id="footer">
+        @Html.SfPlaceHolder("Footer")
+    </footer>
+</div>
+
+
+@* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
+@if (Html.ShouldRenderInlineEditing())
+{
+@Html.Script(ScriptRef.MicrosoftAjax, "top")
+@Html.Script(ScriptRef.MicrosoftAjaxCore, "top")
+@Html.Script(ScriptRef.JQuery, "top")
+
+@Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js"), "top")
+@Html.Script(ScriptRef.KendoAll, "top")
+@Html.Script(ScriptRef.KendoTimezones, "top")
+@Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js"), "top")
+@Html.InlineEditingManager(false)
+}
+
+@Html.Section("bottom")
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "concatJsFiles": [
+    "assets/src/project/js/vendor/modernizr-2.6.2.min.js",
+    "assets/src/project/js/owl.carousel.min.js",
+    "assets/src/project/js/bootstrap.min.js",
+    "assets/src/project/js/wow.min.js",
+    "assets/src/project/js/slider.js",
+    "assets/src/project/js/jquery.fancybox.js",
+    "assets/src/project/js/main.js"
+  ]
+}
